@@ -12,10 +12,10 @@ class App extends Component {
   }
 
   updateState(obj) {
-    Object.assign(this.state, obj);
+    const newState = Object.assign(this.state, obj);
+    this.setState(newState)
   }
   
-  // Fetches our GET route from the Express server. (Note the route we are fetching matches the GET route from server.js
   callBackendAPI = async () => {
     try {
       const response = await fetch('/getuserdata');
@@ -28,14 +28,12 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // Call our fetch function below once the component mounts
     this.callBackendAPI()
     .then((userData) => this.setState({userdata: userData}))
     .catch(err => console.log(err));
   }
 
   componentDidUpdate() {
-    // Call our fetch function below once the component mounts
     this.callBackendAPI()
     .then((userData) => this.setState({userdata: userData}))
     .catch(err => console.log(err));

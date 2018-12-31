@@ -18,8 +18,6 @@ client.connect( (err, database) => {
   app.listen(port, () => console.log(`Listening on port ${port}`))
 });
 
-
-// create a GET route
 app.get('/getuserdata', (req, res) => {
   const collection = db.db("users").collection("info");
   collection.find().toArray((err, docs) => {
